@@ -1,4 +1,9 @@
 import unittest
+
+from scipy import ndimage
+
+import matplotlib.pyplot as plt
+
 import sol2 as sol
 from imageio import imread
 from skimage.color import rgb2gray
@@ -7,30 +12,6 @@ from scipy.io import wavfile
 import os
 import inspect
 import ast
-
-pdf_ratio = 1.25
-smallest_ratio = 0.26
-largest_ratio = 3.9
-double_ratio = 2
-half_ratio = 0.5
-same = 1
-ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio, same]
-
-arr_pdf = (np.arange(1000), "arr_pdf")
-arr_large_zeros = (np.zeros_like(arr_pdf), "arr_large_zeros")
-arr_large_ones = (np.ones_like(arr_pdf), "arr_large_ones")
-arr_normal = (np.array([1, 2, 3]), "arr_normal")
-arr_same_val = (np.array([1, 1, 1]), "arr_same_val")
-arr_zero_vals = (np.array([0, 0, 0]), "arr_zero_vals")
-arr_single_cell = (np.array([1]), "arr_single_cell")
-arr_single_zero = (np.array([0]), "arr_single_zero")
-arr_empty = (np.array([]), "arr_empty")
-
-test_arrs = [arr_pdf, arr_normal, arr_same_val, arr_zero_vals, arr_single_cell, arr_single_zero, arr_empty,
-             arr_large_ones, arr_large_zeros]
-
-
-# ================================ helper functions ================================
 
 
 def read_image(filename, representation):
@@ -57,6 +38,38 @@ def read_image(filename, representation):
         im_float = im_float / 255
 
     return im_float
+
+
+def _generate_images(names):
+    images = []
+    for name in names:
+        images.append((read_image(os.path.join(os.path.abspath(r'external'), "{}.jpg".format(name)), 1), name))
+    return images
+
+
+pdf_ratio = 1.25
+smallest_ratio = 0.26
+largest_ratio = 3.9
+double_ratio = 2
+half_ratio = 0.5
+same = 1
+ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio, same]
+
+arr_pdf = (np.arange(1000), "arr_pdf")
+arr_large_zeros = (np.zeros_like(arr_pdf), "arr_large_zeros")
+arr_large_ones = (np.ones_like(arr_pdf), "arr_large_ones")
+arr_normal = (np.array([1, 2, 3]), "arr_normal")
+arr_same_val = (np.array([1, 1, 1]), "arr_same_val")
+arr_zero_vals = (np.array([0, 0, 0]), "arr_zero_vals")
+arr_single_cell = (np.array([1]), "arr_single_cell")
+arr_single_zero = (np.array([0]), "arr_single_zero")
+arr_empty = (np.array([]), "arr_empty")
+
+test_arrs = [arr_pdf, arr_normal, arr_same_val, arr_zero_vals, arr_single_cell, arr_single_zero, arr_empty,
+             arr_large_ones, arr_large_zeros]
+
+
+# ================================ helper functions ================================
 
 
 def _does_contain(function, statements):
@@ -88,6 +101,7 @@ class TestEx2(unittest.TestCase):
         cls.reshaped_aria = cls.aria_data.reshape(cls.aria_data.shape[0], 1)
         cls.monkey_color = read_image(cls.monkey_path, 2)
         cls.monkey_grayscale = read_image(cls.monkey_path, 1)
+        cls.images = _generate_images(['monkey', 'city', 'trees', 'view', 'waterfall', 'woman'])
 
     @classmethod
     def tearDownClass(cls):
@@ -185,11 +199,14 @@ class TestEx2(unittest.TestCase):
 
         if func.__name__ == "change_rate":
             self.assertIsNone(np.testing.assert_array_equal(self.aria_data, sol_data,
-                                                        err_msg=r'wav file data should not be changed by "change_rate" function'))
+                                                            err_msg=r'wav file data should not be changed by "change_rate" function'))
         else:
-            self.assertEqual(self.aria_rate, sol_rate, msg='"{}" should not change the sample rate'.format(func.__name__))
+            self.assertEqual(self.aria_rate, sol_rate,
+                             msg='"{}" should not change the sample rate'.format(func.__name__))
         # print("orig time : {}\nratio : {}\nnew time : {}\nsol new time : {}\n=====\n".format(orig_time, ratio, new_time, len(sol_data) / sol_rate))
-        self.assertAlmostEqual(new_time, len(sol_data) / sol_rate, delta=acc, msg='Old duration was {} seconds, ratio was {}, new duration should be {} seconds. Check your calculations.'.format(orig_time, ratio, new_time))
+        self.assertAlmostEqual(new_time, len(sol_data) / sol_rate, delta=acc,
+                               msg='Old duration was {} seconds, ratio was {}, new duration should be {} seconds. Check your calculations.'.format(
+                                   orig_time, ratio, new_time))
 
     # -------------------------------- 2.1 test --------------------------------
 
@@ -270,7 +287,8 @@ class TestEx2(unittest.TestCase):
 
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)')
+        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)',
+                         msg='"resize_spectrogram"\'s signature is not as requested.')
 
         # ==== Testing speed over different ratios ====
 
@@ -279,6 +297,43 @@ class TestEx2(unittest.TestCase):
                 self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 1.e-1)
             else:
                 self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 5.e-1)
+
+    # ================================ Part III Tests ================================
+
+
+    def _test_der_module(self, func, name):
+        # ==== Structure testing ====
+
+        self.assertEqual(str(inspect.signature(func)), r'(im)',
+                         msg='"{}"\'s signature is not as requested.'.format(name))
+
+
+
+        for im in self.images:
+            rel_path = r'output_compare/{}_mag.csv' if (name == 'conv_der') else r'output_compare/{}_mag.csv'
+            # np.savetxt(os.path.abspath(rel_path.format(im[1])), sol.conv_der(im[0]), delimiter=",")
+            saved_mag = np.loadtxt(os.path.abspath(rel_path.format(im[1])), np.float64, delimiter=",")
+
+            mag = func(im[0])
+
+            self.assertEqual(im[0].shape, mag.shape,
+                             msg=r'Derivative magnitude matrix\'s shape should be equal to the original image.')
+
+            self.assertIsNone(np.testing.assert_array_equal(mag, saved_mag))
+
+    # -------------------------------- 3.1  --------------------------------
+
+    # todo: SPECIFY ITS COMPARED TO MY OUTPUT
+    def test_conv_der(self):
+
+        self._test_der_module(sol.conv_der, sol.conv_der.__name__)
+
+    # -------------------------------- 3.2  --------------------------------
+
+    # todo: SPECIFY ITS COMPARED TO MY OUTPUT
+    def test_fourier_der(self):
+
+        self._test_der_module(sol.fourier_der, sol.fourier_der.__name__)
 
 
 if __name__ == '__main__':
