@@ -9,6 +9,26 @@ import inspect
 import ast
 
 
+pdf_ratio = 1.25
+smallest_ratio = 0.26
+largest_ratio = 3.9
+double_ratio = 2
+half_ratio = 0.5
+ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio]
+
+arr_pdf = (np.arange(1000), "arr_pdf")
+arr_large_zeros = (np.zeros_like(arr_pdf), "arr_large_zeros")
+arr_large_ones = (np.ones_like(arr_pdf), "arr_large_ones")
+arr_normal = (np.array([1, 2, 3]), "arr_normal")
+arr_same_val = (np.array([1, 1, 1]), "arr_same_val")
+arr_zero_vals = (np.array([0, 0, 0]), "arr_zero_vals")
+arr_single_cell = (np.array([1]), "arr_single_cell")
+arr_single_zero = (np.array([0]), "arr_single_zero")
+arr_empty = (np.array([]), "arr_empty")
+
+test_arrs = [arr_pdf, arr_normal, arr_same_val, arr_zero_vals, arr_single_cell, arr_single_zero, arr_empty,
+             arr_large_ones, arr_large_zeros]
+
 # ================================ helper functions ================================
 
 
@@ -50,7 +70,6 @@ def _uses_loop(function):
 
 def _has_return(function):
     return _does_contain(function, ast.Return)
-
 
 # ================================ unittest class ================================
 
@@ -186,12 +205,7 @@ class TestEx2(unittest.TestCase):
     # -------------------------------- 2.2 test --------------------------------
 
     def _test_resize_helper(self, arr, name):
-        pdf_ratio = 1.25
-        smallest_ratio = 0.26
-        largest_ratio = 3.9
-        double_ratio = 2
-        half_ratio = 0.5
-        ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio]
+
         for ratio in ratios:
             result = sol.resize(arr, ratio)
 
@@ -204,8 +218,8 @@ class TestEx2(unittest.TestCase):
                              msg='"change_samples" returned array\'s length is wrong on "' + name + '" array and "' + str(
                                  ratio) + '" ratio.')
 
-    def test_resize(
-            self):  # todo: comment - DOES NOT TEST *HOW* YOU RESIZED THE ARRAY, ONLY THAT IT IS RESIZED TO THE RIGHT LENGTH
+    def test_resize(self):
+        # todo: comment - DOES NOT TEST *HOW* YOU RESIZED THE ARRAY, ONLY THAT IT IS RESIZED TO THE RIGHT LENGTH
         # ==== Structure testing ====
 
         self.assertEqual(str(inspect.signature(sol.resize)), r'(data, ratio)')
@@ -213,34 +227,35 @@ class TestEx2(unittest.TestCase):
         # todo: check if should not have loops
         # todo: check if an empty array might be sent as input
 
-        arr_pdf = (np.arange(1000), "arr_pdf")
-        arr_large_zeros = (np.zeros_like(arr_pdf), "arr_large_zeros")
-        arr_large_ones = (np.ones_like(arr_pdf), "arr_large_ones")
-        arr_normal = (np.array([1, 2, 3]), "arr_normal")
-        arr_same_val = (np.array([1, 1, 1]), "arr_same_val")
-        arr_zero_vals = (np.array([0, 0, 0]), "arr_zero_vals")
-        arr_single_cell = (np.array([1]), "arr_single_cell")
-        arr_single_zero = (np.array([0]), "arr_single_zero")
-        arr_empty = (np.array([]), "arr_empty")
-
-        test_arrs = [arr_pdf, arr_normal, arr_same_val, arr_zero_vals, arr_single_cell, arr_single_zero, arr_empty,
-                     arr_large_ones, arr_large_zeros]
-
         for arr in test_arrs:
             self._test_resize_helper(arr[0].astype(np.float64), arr[1])
 
-    # def _change_samples_test_helper(self, ratio, new_rate):
-    #     sol.change_samples(self.aria_path, np.float64(ratio))
-    #     sol_rate, sol_data = wavfile.read(os.path.abspath(r'change_samples.wav'))
-    #
-    #     self.assertEqual()
-    #     self.assertIsNone(np.testing.assert_array_equal(self.aria_data, sol_data, err_msg=r'wav file data should not be changed by "change_rate" function'))
-    #
-    #     self.assertEqual(new_rate, sol_rate, msg=r'Old rate was ' + str(self.aria_rate) + 'Hz, ratio was ' + str(ratio) +', new rate should be ' + str(new_rate) + 'Hz. Check your calculations.')
-    #
-    # def test_change_samples(self):
-    #     pass
+    def _change_samples_test_helper(self, ratio):
+
+        sol.change_samples(self.aria_path, np.float64(ratio))
+        sol_rate, sol_data = wavfile.read(os.path.abspath(r'change_samples.wav'))
+
+        self.assertEqual(self.aria_rate, sol_rate, msg=r'""change_samples" should not change the sample rate')
+
+        self.assertEqual(int(len(sol_data // ratio)), len(sol_data),
+                         msg=r'amount of samples after "change_samples" is different than it should be')
+
+
+    def test_change_samples(self):
+        # ==== Structure testing ====
+
+        self.assertEqual(str(inspect.signature(sol.change_samples)), r'(filename, ratio)')
+
+        # ==== Structure testing ====
+
+        for ratio in ratios:
+            if ratio >= 0.5:
+                self._change_samples_test_helper(ratio)
+
+
 
 
 if __name__ == '__main__':
     unittest.main()
+
+
