@@ -11,6 +11,7 @@ I will try and make it as clear as possible as to which extent the tests cover t
 
 ## :books: Documentation
 [![](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://assafhalsadi.github.io/Tests_ImageProcessingEx02/. )
+
 Easy navigation through this README file can be found here
 
 ## Requirements
