@@ -1,6 +1,6 @@
 # HUJI Image Processing course (67829) Ex2 Tests
 [![Build Status](https://img.shields.io/badge/build%20version-1.0-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
-![](readme_assets/julie_der.jpg)
+![](../readme_assets/julie_der.jpg)
 
 Testing suite for the second exercise of Image Processing course (67829) at HUJI. The suite includes basic tests for all of the exercises functions that checks the API, the return values, usage of loops and some functionality. In this README I will go over requirements, how to use the tests, each tests coverage and what it means to pass it.
 
