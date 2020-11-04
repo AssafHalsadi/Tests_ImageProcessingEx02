@@ -8,13 +8,13 @@ import os
 import inspect
 import ast
 
-
 pdf_ratio = 1.25
 smallest_ratio = 0.26
 largest_ratio = 3.9
 double_ratio = 2
 half_ratio = 0.5
-ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio]
+same = 1
+ratios = [pdf_ratio, smallest_ratio, largest_ratio, double_ratio, half_ratio, same]
 
 arr_pdf = (np.arange(1000), "arr_pdf")
 arr_large_zeros = (np.zeros_like(arr_pdf), "arr_large_zeros")
@@ -28,6 +28,7 @@ arr_empty = (np.array([]), "arr_empty")
 
 test_arrs = [arr_pdf, arr_normal, arr_same_val, arr_zero_vals, arr_single_cell, arr_single_zero, arr_empty,
              arr_large_ones, arr_large_zeros]
+
 
 # ================================ helper functions ================================
 
@@ -70,6 +71,7 @@ def _uses_loop(function):
 
 def _has_return(function):
     return _does_contain(function, ast.Return)
+
 
 # ================================ unittest class ================================
 
@@ -135,6 +137,7 @@ class TestEx2(unittest.TestCase):
 
     # -------------------------------- 1.1 test  --------------------------------
 
+    # todo: Check return types
     def test_DFT_IDFT_1D(self):
         # ==== Test DFT ====
 
@@ -169,15 +172,24 @@ class TestEx2(unittest.TestCase):
 
     # -------------------------------- helper functions  --------------------------------
 
-    def _change_rate_test_helper(self, ratio, new_rate):
-        sol.change_rate(self.aria_path, np.float64(ratio))
-        sol_rate, sol_data = wavfile.read(os.path.abspath(r'change_rate.wav'))
+    def _test_speedup_module(self, func, ratio, first_arg, acc):
+        orig_time = len(self.aria_data) / self.aria_rate
+        new_time = orig_time / ratio
 
-        self.assertIsNone(np.testing.assert_array_equal(self.aria_data, sol_data,
+        if func.__name__ == "resize_spectrogram":
+            sol_rate = self.aria_rate
+            sol_data = func(first_arg, np.float64(ratio))
+        else:
+            func(first_arg, np.float64(ratio))
+            sol_rate, sol_data = wavfile.read(os.path.abspath('{}.wav'.format(func.__name__)))
+
+        if func.__name__ == "change_rate":
+            self.assertIsNone(np.testing.assert_array_equal(self.aria_data, sol_data,
                                                         err_msg=r'wav file data should not be changed by "change_rate" function'))
-
-        self.assertEqual(new_rate, sol_rate, msg=r'Old rate was ' + str(self.aria_rate) + 'Hz, ratio was ' + str(
-            ratio) + ', new rate should be ' + str(new_rate) + 'Hz. Check your calculations.')
+        else:
+            self.assertEqual(self.aria_rate, sol_rate, msg='"{}" should not change the sample rate'.format(func.__name__))
+        # print("orig time : {}\nratio : {}\nnew time : {}\nsol new time : {}\n=====\n".format(orig_time, ratio, new_time, len(sol_data) / sol_rate))
+        self.assertAlmostEqual(new_time, len(sol_data) / sol_rate, delta=acc, msg='Old duration was {} seconds, ratio was {}, new duration should be {} seconds. Check your calculations.'.format(orig_time, ratio, new_time))
 
     # -------------------------------- 2.1 test --------------------------------
 
@@ -190,19 +202,12 @@ class TestEx2(unittest.TestCase):
         self.assertEqual(_has_return(sol.change_rate), False,
                          msg=r'"change_rate" function should not have a return statement')
 
-        # ==== pdf example ====
+        # ==== Testing speed over different ratios ====
 
-        self._change_rate_test_helper(1.25, 5000)
+        for ratio in ratios:
+            self._test_speedup_module(sol.change_rate, ratio, self.aria_path, 1.e-3)
 
-        # ==== biggest ratio example ====
-
-        self._change_rate_test_helper(3.9, 15600)
-
-        # ==== smallest ratio example ====
-
-        self._change_rate_test_helper(0.26, 1040)
-
-    # -------------------------------- 2.2 test --------------------------------
+    # -------------------------------- 2.2 tests --------------------------------
 
     def _test_resize_helper(self, arr, name):
 
@@ -230,32 +235,51 @@ class TestEx2(unittest.TestCase):
         for arr in test_arrs:
             self._test_resize_helper(arr[0].astype(np.float64), arr[1])
 
-    def _change_samples_test_helper(self, ratio):
-
-        sol.change_samples(self.aria_path, np.float64(ratio))
-        sol_rate, sol_data = wavfile.read(os.path.abspath(r'change_samples.wav'))
-
-        self.assertEqual(self.aria_rate, sol_rate, msg=r'""change_samples" should not change the sample rate')
-
-        self.assertEqual(int(len(sol_data // ratio)), len(sol_data),
-                         msg=r'amount of samples after "change_samples" is different than it should be')
-
-
     def test_change_samples(self):
         # ==== Structure testing ====
 
         self.assertEqual(str(inspect.signature(sol.change_samples)), r'(filename, ratio)')
 
-        # ==== Structure testing ====
+        # ==== Testing speed over different ratios ====
 
         for ratio in ratios:
             if ratio >= 0.5:
-                self._change_samples_test_helper(ratio)
+                self._test_speedup_module(sol.change_samples, ratio, self.aria_path, 1.e-3)
 
+    # -------------------------------- 2.3 tests --------------------------------
 
+    # todo: SPECIFY THAT BECAUSE STFT AND ISTFT ARE NOT PRECISE, RESULTS MAY VARY OR FLAT OUT BE WRONG
+    def test_resize_spectogram(self):
+
+        # ==== Structure testing ====
+
+        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)')
+
+        # ==== Testing speed over different ratios ====
+
+        for ratio in ratios:
+            if ratio >= 1:
+                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 1.e-1)
+            else:
+                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 5.e-1)
+
+    # -------------------------------- 2.4 tests --------------------------------
+
+    # todo: SPECIFY THAT BECAUSE STFT AND ISTFT ARE NOT PRECISE, RESULTS MAY VARY OR FLAT OUT BE WRONG
+    def test_resize_vocoder(self):
+
+        # ==== Structure testing ====
+
+        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)')
+
+        # ==== Testing speed over different ratios ====
+
+        for ratio in ratios:
+            if ratio >= 1:
+                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 1.e-1)
+            else:
+                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 5.e-1)
 
 
 if __name__ == '__main__':
     unittest.main()
-
-
