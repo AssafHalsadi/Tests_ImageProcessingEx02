@@ -1,5 +1,6 @@
 # HUJI Image Processing course (67829) Ex2 Tests
-[![Build Status](https://img.shields.io/badge/build%20version-1.0-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)![](readme_assets/julie_der.jpg)
+[![Build Status](https://img.shields.io/badge/build%20version-1.0-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
+![](readme_assets/julie_der.jpg)
 
 Testing suite for the second exercise of Image Processing course (67829) at HUJI. The suite includes basic tests for all of the exercises functions that checks the API, the return values, usage of loops and some functionality. In this README I will go over requirements, how to use the tests, each tests coverage and what it means to pass it.
 
@@ -9,7 +10,7 @@ Passing these tests DOES NOT guaranty you will get a good grade in any way, as t
 I will try and make it as clear as possible as to which extent the tests cover the exercise, but i felt the disclaimer was needed in any case.
 
 ## :books: Documentation
-
+[![See MobSF Documentation](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](html/pdoc/index.html)
 
 ## Requirements
 To run the tests you will only need the following things:
