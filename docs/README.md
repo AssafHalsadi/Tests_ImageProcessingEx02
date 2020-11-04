@@ -10,7 +10,8 @@ Passing these tests DOES NOT guaranty you will get a good grade in any way, as t
 I will try and make it as clear as possible as to which extent the tests cover the exercise, but i felt the disclaimer was needed in any case.
 
 ## :books: Documentation
-[![See MobSF Documentation](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](html/pdoc/index.html)
+[![](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://assafhalsadi.github.io/Tests_ImageProcessingEx02/. )
+Easy navigation through this README file can be found here
 
 ## Requirements
 To run the tests you will only need the following things:
