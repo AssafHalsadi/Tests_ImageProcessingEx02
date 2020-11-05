@@ -22,15 +22,19 @@ I will try and make it as clear as possible as to which extent the tests cover t
     * [Trough Command Line](#CMD2) (Textual Interface)
     * [Through Pycharm](#PY2)
 * Test Scopes
-    * ['test_DFT_IDFT_1D']()
-    * ['test_DFT2_IDFT2']()
-    * ['test_change_rate']()
-    * ['test_change_samples']()
-    * ['test_conv_der']()
-    * ['test_fourier_der']()
-    * ['test_resize']()
-    * ['test_resize_spectogram']()
-    * ['test_resize_vocoder']()
+    * DFT Tests
+        * ['test_DFT_IDFT_1D'](#1D)
+        * ['test_DFT2_IDFT2'](#2D)
+    * Audio Speed Tests
+        * ['test_change_rate'](#RATE)
+        * ['test_change_samples'](#SAMPLES)
+        * ['test_resize'](#RESIZE)
+        * ['test_resize_spectogram'](#SPECTROGRAM)
+        * ['test_resize_vocoder'](#VOCODER)
+    * Derivative Tests
+        * ['test_conv_der'](#CONVDER)
+        * ['test_fourier_der'](#FOURIERDER)
+
     
 ## :books: Documentation<a name="DOC"></a>
 [![](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://assafhalsadi.github.io/Tests_ImageProcessingEx02/. )
@@ -139,7 +143,6 @@ Once you open _RunMe.bat_ a command line window will open, and after a short whi
 There are 9 tests that cover general test cases for all of the exercise's API (some tests test multiple functions).
  
 The testing process will look like this:
-
 <details>
 <summary>Open Image</summary>
 <p><img src="../readme_assets/12.png" width="500">
@@ -152,64 +155,57 @@ The testing process will look like this:
 </p>
 </details>
 
+* When the tester ends, if you passed all test you will see the word "OK" in capital letters at the bottom of the window, like so:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/13.png" width="500"></p>
+    </details>
 
+* Otherwise, you will see "Failure" at the bottom, and the number of failed tests:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/17-2.png" width="500"></p>
+    </details>
 
-When the tester ends, if you passed all test you will see the word "OK" in capital letters at the bottom of the window, like so:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/13.png" width="500"></p>
-</details>
-
-Otherwise, you will see "Failure" at the bottom, and the number of failed tests:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/17-2.png" width="500"></p>
-</details>
-
-and which tests failed at the top:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/17-1.png" width="500"></p>
-</details>
+* and which tests failed at the top:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/17-1.png" width="500"></p>
+    </details>
     
-The errors will be separated by a line of "===", and look like the following picture:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/18.png" width="1000"></p>
-</details>
+* The errors will be separated by a line of "===", and look like the following picture:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/18.png" width="1000"></p>
+    </details>
     
 ### Trough Pycharm<a name="PY2"></a>
-Once you run a test, a console will open at the bottom of the pycharm screen, make sure both of the following symbols are pressed to be able to see all tests, both passed tests and failed ones:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/15.png" width="500"></p>
-</details>
+* Once you run a test, a console will open at the bottom of the pycharm screen, make sure both of the following symbols are pressed to be able to see all tests, both passed tests and failed ones:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/15.png" width="500"></p>
+    </details>
     
-If you passed all of the tests, all branches at the bottom left of the screen will have a small green :heavy_check_mark: and a red "OK" will be written at the bottom of the console:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/14.png" width="500"></p>
-</details>
+* If you passed all of the tests, all branches at the bottom left of the screen will have a small green :heavy_check_mark: and a red "OK" will be written at the bottom of the console:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/14.png" width="500"></p>
+    </details>
     
-If you haven't, some tests will have a small orange X mark beside them:
-
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/16.png" width="500"></p>
-</details>
+* If you haven't, some tests will have a small orange X mark beside them:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/16.png" width="500"></p>
+    </details>
     
-Each error explanation will begin with the word "Failure", followed by the traceback of the issue:
+* Each error explanation will begin with the word "Failure", followed by the traceback of the issue:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/19.png" width="1000"></p>
+    </details>
 
-<details>
-<summary>Open Image</summary>
-<p><img src="../readme_assets/19.png" width="1000"></p>
-</details>
+## Test Scopes
+### DFT Tests
 
 
 
