@@ -62,8 +62,11 @@ class CustomTextTestRunner(unittest.runner.TextTestRunner):
 
 
 def get_tests():
-    # print([method for method in dir(tester.TestEx2) if method.startswith('test_')])
-    # all tests are: ['test_DFT2_IDFT2', 'test_DFT_IDFT_1D', 'test_change_rate', 'test_change_samples', 'test_resize']
+    """
+    Generates and returns a list of all the names of tests to run through the textual interface
+    :return: The aforementioned list.
+    """
+    # return ['test_DFT2_IDFT2', 'test_DFT_IDFT_1D', 'test_change_rate', 'test_change_samples', 'test_conv_der', 'test_fourier_der', 'test_resize', 'test_resize_spectogram', 'test_resize_vocoder']
     return [tester.TestEx2(method) for method in dir(tester.TestEx2) if method.startswith('test_')]
 
 

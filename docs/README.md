@@ -32,13 +32,38 @@ To run the tests you will only need the following things:
 
 ## How to - running the tests<a name="HOWTO"></a>
 ### Setup
+1. Clone this repository into a _"tests"_ folder within your project's root folder:
+    * Open a new folder named _"tests"_ in your project's root folder.
+    * Open a command prompt on your computer, I will use cmd as an example on windows: ![open cmd](../readme_assets/02.png)
+    * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project): ![cd](../readme_assets/03.png)
+    * Go to the [top of the page](#TOP), there you should copy the git link: [![copy link](../readme_assets/01.png)](#TOP)
+    * Type `git clone *copy here*` : ![clone](../readme_assets/04.png)
+    * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
+2. Unpack the _output_compare.rar_ located in the _output_compare_ folder. ![unpack](../readme_assets/05.png)
+3. That is it, no need for complicated voodoo. :smile:
 
-<details>
-<summary>1. Clone this repository into a "tests" folder within your project's root folder:</summary>
-    <p>* Open a command prompt on your computer, I will use cmd as an example on windows: ![open cmd](../readme_assets/02.png)</p>
-</details>
+### Usage
+There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
+#### Textual Interface
+1. Go to the project's folder.
+2. Go to the _tests_ sub-folder.
+3. Double click on _'RunMe.bat'_: ![runme](../readme_assets/06.png)
+If everything went according to plan, you should see a cmd window opens, and after a while the tests will start running.
 
-1. Go to the [top of the page](#TOP), there you should copy the git link: [![copy link](../readme_assets/01.png)](#TOP)
+**Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
+![testList](../readme_assets/07.png)
+Flip the comment like so:
+![testList02](../readme_assets/08.png)
+and delete the names of the tests you don't want to run.
+#### Pycharm
+1. Go to _test _ sol2.py_ file, located in the "tests" folder.
+2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
+![runAll](../readme_assets/09.png)
+3. To run an individual test, scroll down to the test's function and click on the green "play" button beside it :
+![runSingle](../readme_assets/10.png)
+You can identify tests by the face they all start with `def test_...`
+
+
 
 
 
