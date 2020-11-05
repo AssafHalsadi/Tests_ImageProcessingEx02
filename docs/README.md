@@ -10,6 +10,10 @@ Passing these tests DOES NOT guaranty you will get a good grade in any way, as t
 I will try and make it as clear as possible as to which extent the tests cover the exercise, but i felt the disclaimer was needed in any case.
 
 ## Table Of Contents
+* General Info
+    * [Documentation](#DOC)
+    * [Collaborators](#COL)
+    * [Contact Info](#CONTACT)
 * How to use
     * [Installation](#SETUP)
     * [Running Through Command Line](#CMD) (Textual Interface)
@@ -28,16 +32,16 @@ I will try and make it as clear as possible as to which extent the tests cover t
     * ['test_resize_spectogram']()
     * ['test_resize_vocoder']()
     
-## :books: Documentation
+## :books: Documentation<a name="DOC"></a>
 [![](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://assafhalsadi.github.io/Tests_ImageProcessingEx02/. )
 
 :arrow_up: _Easy navigation through this README file can be found here_ :arrow_up:
 _images might not work there_
 
-## Collaborators
+## Collaborators<a name="COL"></a>
 [Assaf Halsadi](https://github.com/AssafHalsadi) :israel:
 
-## Contact Info
+## Contact Info<a name="CONTACT"></a>
 If you find any mistakes, or have any questions - please contact me through the course's Slack [![Slack](https://img.shields.io/badge/HUJI_IMPR_20%20slack-join-green?logo=slack&labelColor=4A154B)](https://join.slack.com/t/huji-impr-20/shared_invite/zt-i5z2lgja-vs8c6RptH8t2_jou~Wvhuw)
 
 Or at the courses forum at the relevant post [![forum](https://img.shields.io/badge/moodle%20forum-goto-orange?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAMAAAAm/38fAAABdFBMVEUNDg4ODw8PEA8PEBAQEA8QEBEQEhMREhEREhISEhETEhATEhEUEhAUFBQVFBEWFxcXFBEXFxgZFRAZFREaFhEcFREcHh4hGBIhHh0iISEkGhElHBQlHRglJCUmJCUmJCYnHhUnJCQoHRQoJSMpHhQpJygqHRIqHhUrJCEsHRQtJSEtKSsxIxQxLi8zLCo0MjQ1JBQ2JhU2KyU3MzE3NDU4IhY5IhU5JBQ5KBc9P0E/JhRAKRVBKxVDQEFDQkVEKBlEPDlEPDtJMBpMTE9PKxlQS0tRRD9TLhpUPzBUSEJjWlhmQh9oXlppQyJuRyFwPhlyV0Z2QRp2QRuPUiCPa1OWViKYWCOfXy2qaSmsZSa0bSq1biq6aye8cCi8cyq/bCjBdCvFcCjFcSjHcijLfC3NbifReyvUdCvWeyvZdCnZfivadSnffyvfgivigizreSftiy7viyvwfSnwhCryhi3zfSjzfij1hyv1iSz2jiz2jyz2jy3O+s8EAAAAtUlEQVR42mMY7ICVg5cXQ5BZUFJOUVGWH02YXdnBzVFXW56NS1pBAElcwtPHy9XWRNXINzIjK9abDy4hoyVm6WynrxdeUpGXW1ngB5cQF2XwCAkw1ogvz3GySKuKg0vYmzIEFaWrM4SVJ4twRlelwCXcXRgCy7JVGELLk4Q5o6oREppmDIGlmSCJRCEUCSZuZAmQUQjgn5+qxBBcHCPEGVGYgCwhZWXOw6BmbcDCqGNjOPCxAwBHvSY/OMtgWQAAAABJRU5ErkJggg==&labelColor=4A154B)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
