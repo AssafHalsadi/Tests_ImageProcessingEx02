@@ -139,6 +139,7 @@ Once you open _RunMe.bat_ a command line window will open, and after a short whi
 There are 9 tests that cover general test cases for all of the exercise's API (some tests test multiple functions).
  
 The testing process will look like this:
+
 ![textual process](../readme_assets/12.png)
 ```diff
 - The RED part indicates how many tests are left.
