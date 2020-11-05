@@ -78,20 +78,6 @@ To run the tests you will only need the following things:
 ### Usage
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
 I'll go through both of these here.
-#### Pycharm
-1. Go to _test _ sol2.py_ file, located in the "tests" folder.
-2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
-    <details>
-    <summary>Open Image</summary>
-    <p><img src="../readme_assets/09.png" width="500"></p>
-    </details>
-
-3. To run an individual test, scroll down to the test's function and click on the green "play" button beside it :
-    <details>
-    <summary>Open Image</summary>
-    <p><img src="../readme_assets/10.png" width="500"></p>
-    </details>
-You can identify tests by the face they all start with `def test_...`
 #### Textual Interface
 1. Go to the project's folder.
 2. Go to the _tests_ sub-folder.
@@ -108,6 +94,20 @@ If everything went according to plan, A cmd window should open, and after a whil
 Flip the comment like so:
 ![testList02](../readme_assets/08.png)
 and delete the names of the tests you don't want to run.
+#### Pycharm
+1. Go to _test _ sol2.py_ file, located in the "tests" folder.
+2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/09.png" width="500"></p>
+    </details>
+
+3. To run an individual test, scroll down to the test's function and click on the green "play" button beside it :
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/10.png" width="500"></p>
+    </details>
+You can identify tests by the face they all start with `def test_...`
 
 
 
