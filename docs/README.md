@@ -161,14 +161,14 @@ When the tester ends, if you passed all test you will see the word "OK" in capit
 <p><img src="../readme_assets/13.png" width="500"></p>
 </details>
 
-Otherwise, you will see "Failure" at the bottom, and the number of failed tests, like so:
+Otherwise, you will see "Failure" at the bottom, and the number of failed tests:
 
 <details>
 <summary>Open Image</summary>
 <p><img src="../readme_assets/17-2.png" width="500"></p>
 </details>
 
-and which tests failed at the top, like so:
+and which tests failed at the top:
 
 <details>
 <summary>Open Image</summary>
@@ -179,7 +179,7 @@ The errors will be separated by a line of "===", and look like the following pic
 
 <details>
 <summary>Open Image</summary>
-<p><img src="../readme_assets/18.png" width="500"></p>
+<p><img src="../readme_assets/18.png" width="1000"></p>
 </details>
     
 ### Trough Pycharm<a name="PY2"></a>
@@ -208,7 +208,7 @@ Each error explanation will begin with the word "Failure", followed by the trace
 
 <details>
 <summary>Open Image</summary>
-<p><img src="../readme_assets/19.png" width="500"></p>
+<p><img src="../readme_assets/19.png" width="1000"></p>
 </details>
 
 
