@@ -49,7 +49,10 @@ To run the tests you will only need the following things:
      ![clone](../readme_assets/04.png)
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
 2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.
- ![unpack](../readme_assets/05.png)
+
+    <img src="../readme_assets/05.png" width="300">
+
+ 
 3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder. 
 3. That is it, no need for complicated voodoo. :smile:
 
