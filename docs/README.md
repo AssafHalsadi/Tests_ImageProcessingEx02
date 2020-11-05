@@ -47,15 +47,21 @@ To run the tests you will only need the following things:
     </details>
     
     * Go to the [top of the page](#TOP), there you should copy the git link: 
-    
-    [![copy link](../readme_assets/01.png)](#TOP)
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/01.png" width="500"></p>
+    </details>
     * Type `git clone *copy here*` :
-    
-     ![clone](../readme_assets/04.png)
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/04.png" width="500"></p>
+    </details>
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
 2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.
-
-    <img src="../readme_assets/05.png" width="300">
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/05.png" width="300"></p>
+    </details>
 
  
 3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder. 
@@ -68,8 +74,10 @@ I'll go through both of these here.
 1. Go to the project's folder.
 2. Go to the _tests_ sub-folder.
 3. Double click on _'RunMe.bat'_:
-
- ![runme](../readme_assets/06.png)
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/06.png" width="300"></p>
+    </details>
  
 If everything went according to plan, you should see a cmd window opens, and after a while the tests will start running.
 
@@ -81,13 +89,16 @@ and delete the names of the tests you don't want to run.
 #### Pycharm
 1. Go to _test _ sol2.py_ file, located in the "tests" folder.
 2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
-
-![runAll](../readme_assets/09.png)
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/09.png" width="500"></p>
+    </details>
 
 3. To run an individual test, scroll down to the test's function and click on the green "play" button beside it :
-
-![runSingle](../readme_assets/10.png)
-
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/10.png" width="500"></p>
+    </details>
 You can identify tests by the face they all start with `def test_...`
 
 
