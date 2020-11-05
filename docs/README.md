@@ -172,7 +172,13 @@ If you passed all of the tests, all branches at the bottom left of the screen wi
 
 ![PASSEDPYCHARM](../readme_assets/14.png)
 
-If you haven't, some tests will have a small 
+If you haven't, some tests will have a small organge X mark beside them:
+
+![FAILEDCHARM](../readme_assets/16.png)
+
+Each error explanation will begin with the word "Failure", followed by the traceback of the issue:
+
+![ERRORCHARM](../readme_assets/19.png)
 
 
 
