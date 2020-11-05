@@ -167,7 +167,7 @@ Otherwise, you will see "Failure" at the bottom, and the number of failed tests:
     <p><img src="../readme_assets/17-2.png" width="500"></p>
     </details>
 
-* and which tests failed at the top:
+and which tests failed at the top:
     <details>
     <summary>Open Image</summary>
     <p><img src="../readme_assets/17-1.png" width="500"></p>
