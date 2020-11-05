@@ -35,12 +35,16 @@ To run the tests you will only need the following things:
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
     * Open a command prompt on your computer, I will use cmd as an example on windows:
+    
      ![open cmd](../readme_assets/02.png)
-    * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project): 
+    * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project):
+     
     ![cd](../readme_assets/03.png)
     * Go to the [top of the page](#TOP), there you should copy the git link: 
+    
     [![copy link](../readme_assets/01.png)](#TOP)
     * Type `git clone *copy here*` :
+    
      ![clone](../readme_assets/04.png)
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
 2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.
