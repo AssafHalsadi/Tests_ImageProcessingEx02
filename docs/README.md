@@ -147,8 +147,32 @@ The testing process will look like this:
 ! The last test in the list will be the one that is currently running, and will look like the ORANGE part in the image.
 @@ The text in the PURPLE part will be the NAMES of the tests and their location in the code. @@
 ```
+When the tester ends, if you passed all test you will see the word "OK" in capital letters at the bottom of the window, like so:
 
+![SUCCESS](../readme_assets/13.png)
 
+Otherwise, you will see "Failure" at the bottom, and the number of failed tests, like so:
+
+![FAILURE](../readme_assets/17-2.png)
+
+and which tests failed at the top, like so:
+
+![FAILURELIST](../readme_assets/17-1.png)
+
+The errors will be separated by a line of "===", and look like the following picture:
+
+![ERRORTEXTUAL](../readme_assets/18.png)
+
+### Trough Pycharm<a name="PY2"></a>
+Once you run a test, a console will open at the bottom of the pycharm screen, make sure both of the following symbols are pressed to be able to see all tests, both passed tests and failed ones:
+
+![AllTests](../readme_assets/15.png)
+
+If you passed all of the tests, all branches at the bottom left of the screen will have a small green :heavy_check_mark: and a red "OK" will be written at the bottom of the console:
+
+![PASSEDPYCHARM](../readme_assets/14.png)
+
+If you haven't, some tests will have a small 
 
 
 
