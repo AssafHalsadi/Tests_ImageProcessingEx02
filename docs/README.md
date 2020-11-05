@@ -35,7 +35,8 @@ To run the tests you will only need the following things:
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
     * Open a command prompt on your computer, I will use cmd as an example on windows:
-    <img src="../readme_assets/02.png" width="48">
+    
+    <img src="../readme_assets/02.png" width="500">
     
     * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project):
      
