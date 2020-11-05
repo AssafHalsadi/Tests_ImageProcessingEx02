@@ -72,27 +72,12 @@ To run the tests you will only need the following things:
     <summary>Open Image</summary>
     <p><img src="../readme_assets/11.png" width="300"></p>
     </details> 
+   
 5. That is it, no need for complicated voodoo. :smile:
 
 ### Usage
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
 I'll go through both of these here.
-#### Textual Interface
-1. Go to the project's folder.
-2. Go to the _tests_ sub-folder.
-3. Double click on _'RunMe.bat'_:
-    <details>
-    <summary>Open Image</summary>
-    <p><img src="../readme_assets/06.png" width="300"></p>
-    </details>
- 
-If everything went according to plan, you should see a cmd window opens, and after a while the tests will start running.
-
-**Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
-![testList](../readme_assets/07.png)
-Flip the comment like so:
-![testList02](../readme_assets/08.png)
-and delete the names of the tests you don't want to run.
 #### Pycharm
 1. Go to _test _ sol2.py_ file, located in the "tests" folder.
 2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
@@ -107,6 +92,23 @@ and delete the names of the tests you don't want to run.
     <p><img src="../readme_assets/10.png" width="500"></p>
     </details>
 You can identify tests by the face they all start with `def test_...`
+#### Textual Interface
+1. Go to the project's folder.
+2. Go to the _tests_ sub-folder.
+3. Double click on _'RunMe.bat'_:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/06.png" width="300"></p>
+    </details>
+ 
+If everything went according to plan, A cmd window should open, and after a while the tests will start running.
+
+**Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
+![testList](../readme_assets/07.png)
+Flip the comment like so:
+![testList02](../readme_assets/08.png)
+and delete the names of the tests you don't want to run.
+
 
 
 
