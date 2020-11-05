@@ -143,13 +143,12 @@ The testing process will look like this:
 <details>
 <summary>Open Image</summary>
 <p><img src="../readme_assets/12.png" width="500">
-```
-diff
-- The RED part indicates how many tests are left.
-+ The GREEN part will only show if that particular test have finished running and either be "ok" if the test passed or "FAILED" otherwise.
-! The last test in the list will be the one that is currently running, and will look like the ORANGE part in the image.
-@@The text in the PURPLE part will be the NAMES of the tests and their location in the code.@@
-``` 
+
+* The RED part indicates how many tests are left.
+* The GREEN part will only show if that particular test have finished running and either be "ok" if the test passed or "FAILED" otherwise.
+* The last test in the list will be the one that is currently running, and will look like the ORANGE part in the image.
+* The text in the PURPLE part will be the NAMES of the tests and their location in the code.
+
 </p>
 </details>
 
