@@ -55,11 +55,14 @@ To run the tests you will only need the following things:
 
 ### Usage
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
+I'll go through both of these here.
 #### Textual Interface
 1. Go to the project's folder.
 2. Go to the _tests_ sub-folder.
 3. Double click on _'RunMe.bat'_:
+
  ![runme](../readme_assets/06.png)
+ 
 If everything went according to plan, you should see a cmd window opens, and after a while the tests will start running.
 
 **Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
@@ -70,9 +73,13 @@ and delete the names of the tests you don't want to run.
 #### Pycharm
 1. Go to _test _ sol2.py_ file, located in the "tests" folder.
 2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
+
 ![runAll](../readme_assets/09.png)
+
 3. To run an individual test, scroll down to the test's function and click on the green "play" button beside it :
+
 ![runSingle](../readme_assets/10.png)
+
 You can identify tests by the face they all start with `def test_...`
 
 
