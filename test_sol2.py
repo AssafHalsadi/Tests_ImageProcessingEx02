@@ -1,8 +1,6 @@
 import unittest
 
-from scipy import ndimage
-
-import matplotlib.pyplot as plt
+from pathlib import Path
 
 import sol2 as sol
 from imageio import imread

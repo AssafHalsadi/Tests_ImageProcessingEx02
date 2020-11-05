@@ -1,6 +1,6 @@
 # HUJI Image Processing course (67829) Ex2 Tests 2020/2021<a name="TOP"></a>
 [![Build Status](https://img.shields.io/badge/build%20version-1.0-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
-![](../readme_assets/julie_der.jpg)
+![](../readme_assets/cover_image.jpg)
 
 Testing suite for the second exercise of Image Processing course (67829) at HUJI. The suite includes basic tests for all of the exercises functions that checks the API, the return values, usage of loops and some functionality. In this README I will go over [requirements](#REQ), a [guide](#HOWTO) of how to use the tests, each tests coverage and what it means to pass it.
 
@@ -40,6 +40,7 @@ To run the tests you will only need the following things:
     * Type `git clone *copy here*` : ![clone](../readme_assets/04.png)
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
 2. Unpack the _output_compare.rar_ located in the _output_compare_ folder. ![unpack](../readme_assets/05.png)
+3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder. 
 3. That is it, no need for complicated voodoo. :smile:
 
 ### Usage
