@@ -34,12 +34,17 @@ To run the tests you will only need the following things:
 ### Setup
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
-    * Open a command prompt on your computer, I will use cmd as an example on windows: ![open cmd](../readme_assets/02.png)
-    * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project): ![cd](../readme_assets/03.png)
-    * Go to the [top of the page](#TOP), there you should copy the git link: [![copy link](../readme_assets/01.png)](#TOP)
-    * Type `git clone *copy here*` : ![clone](../readme_assets/04.png)
+    * Open a command prompt on your computer, I will use cmd as an example on windows:
+     ![open cmd](../readme_assets/02.png)
+    * Go to the _tests_ folder using the `cd` command like so : `_cd [path_to_project]/tests` (change [path_to_project] with the path to your project): 
+    ![cd](../readme_assets/03.png)
+    * Go to the [top of the page](#TOP), there you should copy the git link: 
+    [![copy link](../readme_assets/01.png)](#TOP)
+    * Type `git clone *copy here*` :
+     ![clone](../readme_assets/04.png)
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
-2. Unpack the _output_compare.rar_ located in the _output_compare_ folder. ![unpack](../readme_assets/05.png)
+2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.
+ ![unpack](../readme_assets/05.png)
 3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder. 
 3. That is it, no need for complicated voodoo. :smile:
 
@@ -48,7 +53,8 @@ There are two main ways to run the tests, via the Textual Interface or via pycha
 #### Textual Interface
 1. Go to the project's folder.
 2. Go to the _tests_ sub-folder.
-3. Double click on _'RunMe.bat'_: ![runme](../readme_assets/06.png)
+3. Double click on _'RunMe.bat'_:
+ ![runme](../readme_assets/06.png)
 If everything went according to plan, you should see a cmd window opens, and after a while the tests will start running.
 
 **Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
