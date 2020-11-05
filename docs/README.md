@@ -19,8 +19,8 @@ I will try and make it as clear as possible as to which extent the tests cover t
     * [Running Through Command Line](#CMD) (Textual Interface)
     * [Running Through Pycharm](#PY)
 * Understanding your results
-    * [Trough Command Line]() (Textual Interface)
-    * [Through Pycharm]()
+    * [Trough Command Line](#CMD2) (Textual Interface)
+    * [Through Pycharm](#PY2)
 * Test Scopes
     * ['test_DFT_IDFT_1D']()
     * ['test_DFT2_IDFT2']()
@@ -50,15 +50,15 @@ Or at the courses forum at the relevant post [![forum](https://img.shields.io/ba
 To run the tests you will only need the following things:
 
 [![python](https://img.shields.io/badge/python-3-blue.svg?logo=python&labelColor=yellow)](https://www.python.org/downloads/)
-[![platform](https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-green.svg)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
-[![file](https://img.shields.io/badge/file-ex2__helper.py-red)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
-[![file](https://img.shields.io/badge/file-sol2.py-red)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
+[![platform](https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-green.svg?logo=windows)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
+[![file](https://img.shields.io/badge/file-ex2__helper.py-red?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAMAAAAm/38fAAABdFBMVEUNDg4ODw8PEA8PEBAQEA8QEBEQEhMREhEREhISEhETEhATEhEUEhAUFBQVFBEWFxcXFBEXFxgZFRAZFREaFhEcFREcHh4hGBIhHh0iISEkGhElHBQlHRglJCUmJCUmJCYnHhUnJCQoHRQoJSMpHhQpJygqHRIqHhUrJCEsHRQtJSEtKSsxIxQxLi8zLCo0MjQ1JBQ2JhU2KyU3MzE3NDU4IhY5IhU5JBQ5KBc9P0E/JhRAKRVBKxVDQEFDQkVEKBlEPDlEPDtJMBpMTE9PKxlQS0tRRD9TLhpUPzBUSEJjWlhmQh9oXlppQyJuRyFwPhlyV0Z2QRp2QRuPUiCPa1OWViKYWCOfXy2qaSmsZSa0bSq1biq6aye8cCi8cyq/bCjBdCvFcCjFcSjHcijLfC3NbifReyvUdCvWeyvZdCnZfivadSnffyvfgivigizreSftiy7viyvwfSnwhCryhi3zfSjzfij1hyv1iSz2jiz2jyz2jy3O+s8EAAAAtUlEQVR42mMY7ICVg5cXQ5BZUFJOUVGWH02YXdnBzVFXW56NS1pBAElcwtPHy9XWRNXINzIjK9abDy4hoyVm6WynrxdeUpGXW1ngB5cQF2XwCAkw1ogvz3GySKuKg0vYmzIEFaWrM4SVJ4twRlelwCXcXRgCy7JVGELLk4Q5o6oREppmDIGlmSCJRCEUCSZuZAmQUQjgn5+qxBBcHCPEGVGYgCwhZWXOw6BmbcDCqGNjOPCxAwBHvSY/OMtgWQAAAABJRU5ErkJggg==)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
+[![file](https://img.shields.io/badge/file-sol2.py-red?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAMAAAAm/38fAAABdFBMVEUNDg4ODw8PEA8PEBAQEA8QEBEQEhMREhEREhISEhETEhATEhEUEhAUFBQVFBEWFxcXFBEXFxgZFRAZFREaFhEcFREcHh4hGBIhHh0iISEkGhElHBQlHRglJCUmJCUmJCYnHhUnJCQoHRQoJSMpHhQpJygqHRIqHhUrJCEsHRQtJSEtKSsxIxQxLi8zLCo0MjQ1JBQ2JhU2KyU3MzE3NDU4IhY5IhU5JBQ5KBc9P0E/JhRAKRVBKxVDQEFDQkVEKBlEPDlEPDtJMBpMTE9PKxlQS0tRRD9TLhpUPzBUSEJjWlhmQh9oXlppQyJuRyFwPhlyV0Z2QRp2QRuPUiCPa1OWViKYWCOfXy2qaSmsZSa0bSq1biq6aye8cCi8cyq/bCjBdCvFcCjFcSjHcijLfC3NbifReyvUdCvWeyvZdCnZfivadSnffyvfgivigizreSftiy7viyvwfSnwhCryhi3zfSjzfij1hyv1iSz2jiz2jyz2jy3O+s8EAAAAtUlEQVR42mMY7ICVg5cXQ5BZUFJOUVGWH02YXdnBzVFXW56NS1pBAElcwtPHy9XWRNXINzIjK9abDy4hoyVm6WynrxdeUpGXW1ngB5cQF2XwCAkw1ogvz3GySKuKg0vYmzIEFaWrM4SVJ4twRlelwCXcXRgCy7JVGELLk4Q5o6oREppmDIGlmSCJRCEUCSZuZAmQUQjgn5+qxBBcHCPEGVGYgCwhZWXOw6BmbcDCqGNjOPCxAwBHvSY/OMtgWQAAAABJRU5ErkJggg==)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
 
 ## How to - running the tests<a name="HOWTO"></a>
 ### Setup<a name="SETUP"></a>
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
-    * Open a command prompt on your computer, I will use cmd as an example on windows:
+    * Open a command line on your computer, I will use cmd as an example on windows:
     <details>
     <summary>Open Image</summary>
     <p><img src="../readme_assets/02.png" width="500"></p>
@@ -115,7 +115,7 @@ If everything went according to plan, A cmd window should open, and after a whil
 
 **Remark**: Some of the tests take A LOT of time to complete. To run only SOME of the tests open the _runner.py_ and scroll down to this function:
 ![testList](../readme_assets/07.png)
-Flip the comment like so:
+Flip which lines are commented like so:
 ![testList02](../readme_assets/08.png)
 and delete the names of the tests you don't want to run.
 #### Pycharm<a name="PY"></a>
@@ -134,6 +134,18 @@ and delete the names of the tests you don't want to run.
 You can identify tests by the face they all start with `def test_...`
 
 ## Understanding your results<a name="HOWTO"></a>
+### Trough Command Line<a name="CMD2"></a>
+Once you open _RunMe.bat_ a command line window will open, and after a short while the tests will start running.
+There are 9 tests that cover general test cases for all of the exercise's API (some tests test multiple functions).
+ 
+The testing process will look like this:
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 
 
