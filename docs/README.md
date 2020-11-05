@@ -9,6 +9,25 @@ Testing suite for the second exercise of Image Processing course (67829) at HUJI
 Passing these tests DOES NOT guaranty you will get a good grade in any way, as they are not moderated by the course's staff.
 I will try and make it as clear as possible as to which extent the tests cover the exercise, but i felt the disclaimer was needed in any case.
 
+## Table Of Contents
+* How to use
+    * [Installation](#SETUP)
+    * [Running Through Command Line](#CMD) (Textual Interface)
+    * [Running Through Pycharm](#PY)
+* Understanding your results
+    * [Trough Command Line]() (Textual Interface)
+    * [Through Pycharm]()
+* Test Scopes
+    * ['test_DFT_IDFT_1D']()
+    * ['test_DFT2_IDFT2']()
+    * ['test_change_rate']()
+    * ['test_change_samples']()
+    * ['test_conv_der']()
+    * ['test_fourier_der']()
+    * ['test_resize']()
+    * ['test_resize_spectogram']()
+    * ['test_resize_vocoder']()
+    
 ## :books: Documentation
 [![](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://assafhalsadi.github.io/Tests_ImageProcessingEx02/. )
 
@@ -32,7 +51,7 @@ To run the tests you will only need the following things:
 [![file](https://img.shields.io/badge/file-sol2.py-red)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
 
 ## How to - running the tests<a name="HOWTO"></a>
-### Setup
+### Setup<a name="SETUP"></a>
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
     * Open a command prompt on your computer, I will use cmd as an example on windows:
@@ -79,7 +98,7 @@ To run the tests you will only need the following things:
 ### Usage
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
 I'll go through both of these here.
-#### Textual Interface
+#### Textual Interface<a name="CMD"></a>
 1. Go to the project's folder.
 2. Go to the _tests_ sub-folder.
 3. Double click on _'RunMe.bat'_:
@@ -95,7 +114,7 @@ If everything went according to plan, A cmd window should open, and after a whil
 Flip the comment like so:
 ![testList02](../readme_assets/08.png)
 and delete the names of the tests you don't want to run.
-#### Pycharm
+#### Pycharm<a name="PY"></a>
 1. Go to _test _ sol2.py_ file, located in the "tests" folder.
 2. To run all of the tests, scroll down to the TestSuite start and click the green "play" button :
     <details>
