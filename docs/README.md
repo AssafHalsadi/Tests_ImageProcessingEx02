@@ -49,13 +49,15 @@ To run the tests you will only need the following things:
     * Go to the [top of the page](#TOP), there you should copy the git link: 
     <details>
     <summary>Open Image</summary>
-    <p><img src="../readme_assets/01.png" width="500"></p>
+    <p><img src="../readme_assets/01.png" width="350"></p>
     </details>
+    
     * Type `git clone *copy here*` :
     <details>
     <summary>Open Image</summary>
     <p><img src="../readme_assets/04.png" width="500"></p>
     </details>
+    
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
 2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.
     <details>
@@ -64,8 +66,13 @@ To run the tests you will only need the following things:
     </details>
 
  
-3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder. 
-3. That is it, no need for complicated voodoo. :smile:
+3. Copy both _sol2.py_, _ex2_helper.py_ and any other files needed for your implementation to the _tests_ folder.
+4. At the end your "tests" folder should look like this:
+    <details>
+    <summary>Open Image</summary>
+    <p><img src="../readme_assets/11.png" width="300"></p>
+    </details> 
+5. That is it, no need for complicated voodoo. :smile:
 
 ### Usage
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
