@@ -139,12 +139,12 @@ Once you open _RunMe.bat_ a command line window will open, and after a short whi
 There are 9 tests that cover general test cases for all of the exercise's API (some tests test multiple functions).
  
 The testing process will look like this:
+![textual process](../readme_assets/12.png)
 ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+- The RED part indicates how many tests are left.
++ The GREEN part will only show if that particular test have finished running and either be "ok" if the test passed or "FAILED" otherwise.
+! The last test in the list will be the one that is currently running, and will look like the ORANGE part in the image.
+@@ The text in the PURPLE part will be the NAMES of the tests and their location in the code. @@
 ```
 
 
