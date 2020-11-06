@@ -6,7 +6,9 @@ Testing suite for the second exercise of Image Processing course (67829) at HUJI
 
 ## TLDR - If you don't know what to do, start here
 The table of contents has links to all of the needed instructions, if you are just interested in running the tests:
-Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO)
+
+Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO).
+
 If you are confused about the results, go to the [Understanding your results](#UNDER) section.
 
 ## :warning: DISCLAIMER :warning:
