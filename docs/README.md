@@ -153,7 +153,7 @@ and delete the names of the tests you don't want to run.
 You can identify tests by the face they all start with `def test_...`
 
 ## Understanding your results<a name="UNDER"></a>
-### Trough Command Line<a name="CMD2"></a>
+### Through Command Line<a name="CMD2"></a>
 Once you open _RunMe.bat_ a command line window will open, and after a short while the tests will start running.
 There are 9 tests that cover general test cases for all of the exercise's API (some tests test multiple functions).
  
@@ -194,7 +194,7 @@ The errors will be separated by a line of "===", and look like the following pic
     <p><img src="../readme_assets/18.png" width="1000"></p>
     </details>
     
-### Trough Pycharm<a name="PY2"></a>
+### Through Pycharm<a name="PY2"></a>
 Once you run a test, a console will open at the bottom of the pycharm screen, make sure both of the following symbols are pressed to be able to see all tests, both passed tests and failed ones:
     <details>
     <summary>Open Image</summary>
