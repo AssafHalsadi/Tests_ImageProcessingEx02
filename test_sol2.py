@@ -1,7 +1,5 @@
 import unittest
 
-from pathlib import Path
-
 import sol2 as sol
 from imageio import imread
 from skimage.color import rgb2gray
@@ -97,7 +95,6 @@ class TestEx2(unittest.TestCase):
     def setUpClass(cls):
         cls.aria_rate, cls.aria_data = wavfile.read(cls.aria_path)
         cls.reshaped_aria = cls.aria_data.reshape(cls.aria_data.shape[0], 1)
-        cls.monkey_color = read_image(cls.monkey_path, 2)
         cls.monkey_grayscale = read_image(cls.monkey_path, 1)
         cls.images = _generate_images(['monkey', 'city', 'trees', 'view', 'waterfall', 'woman'])
 
@@ -272,7 +269,7 @@ class TestEx2(unittest.TestCase):
     def test_resize_vocoder(self):
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)',
+        self.assertEqual(str(inspect.signature(sol.resize_vocoder)), r'(data, ratio)',
                          msg='"resize_spectrogram"\'s signature is not as requested.')
 
         # ==== Testing speed over different ratios ====
@@ -285,13 +282,10 @@ class TestEx2(unittest.TestCase):
 
     # ================================ Part III Tests ================================
 
-
     def _test_der_module(self, func, name):
         # ==== Structure testing ====
         self.assertEqual(str(inspect.signature(func)), r'(im)',
                          msg='"{}"\'s signature is not as requested.'.format(name))
-
-
 
         for im in self.images:
             rel_path = r'output_compare/{}_mag.csv' if (name == 'conv_der') else r'output_compare/{}_mag.csv'
