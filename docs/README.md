@@ -19,6 +19,7 @@ I will try and make it as clear as possible as to which extent the tests cover t
 1. Tests for DFT/IDFT related functions compare output to numpy's fft's with an error variance of 1.e-5 difference at most.
 2. Tests for speedup function test that the output wav file is at the right speed.
 3. Tests for the derivative functions COMPARE TO MY OUTPUT, and have a chance of being wrong. 
+All tests cover basic API checks, correct usage of return/loops and some specific functionality that is explained in the [code doc](#DOC).
 
 ## Table Of Contents
 * General Info
@@ -215,7 +216,7 @@ Each error explanation will begin with the word "Failure", followed by the trace
     <p><img src="../readme_assets/19.png" width="1000"></p>
     </details>
 
-## Test Scopes
+## Test Scopes<a name="DOC"></a>
 ### DFT Tests
 
 
