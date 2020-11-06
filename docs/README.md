@@ -11,6 +11,8 @@ Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO).
 
 If you are confused about the results, go to the [Understanding your results](#UNDER) section.
 
+If you find any issues, or want to ask a question, go to the [Contact Info](#CONTACT) section.
+
 ## :warning: DISCLAIMER :warning:
 Passing these tests DOES NOT guaranty you will get a good grade in any way, as they are not moderated by the course's staff.
 I will try and make it as clear as possible as to which extent the tests cover the exercise, but i felt the disclaimer was needed in any case.
@@ -72,7 +74,7 @@ To run the tests you will only need the following things:
 [![file](https://img.shields.io/badge/file-sol2.py-red?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAMAAAAm/38fAAABdFBMVEUNDg4ODw8PEA8PEBAQEA8QEBEQEhMREhEREhISEhETEhATEhEUEhAUFBQVFBEWFxcXFBEXFxgZFRAZFREaFhEcFREcHh4hGBIhHh0iISEkGhElHBQlHRglJCUmJCUmJCYnHhUnJCQoHRQoJSMpHhQpJygqHRIqHhUrJCEsHRQtJSEtKSsxIxQxLi8zLCo0MjQ1JBQ2JhU2KyU3MzE3NDU4IhY5IhU5JBQ5KBc9P0E/JhRAKRVBKxVDQEFDQkVEKBlEPDlEPDtJMBpMTE9PKxlQS0tRRD9TLhpUPzBUSEJjWlhmQh9oXlppQyJuRyFwPhlyV0Z2QRp2QRuPUiCPa1OWViKYWCOfXy2qaSmsZSa0bSq1biq6aye8cCi8cyq/bCjBdCvFcCjFcSjHcijLfC3NbifReyvUdCvWeyvZdCnZfivadSnffyvfgivigizreSftiy7viyvwfSnwhCryhi3zfSjzfij1hyv1iSz2jiz2jyz2jy3O+s8EAAAAtUlEQVR42mMY7ICVg5cXQ5BZUFJOUVGWH02YXdnBzVFXW56NS1pBAElcwtPHy9XWRNXINzIjK9abDy4hoyVm6WynrxdeUpGXW1ngB5cQF2XwCAkw1ogvz3GySKuKg0vYmzIEFaWrM4SVJ4twRlelwCXcXRgCy7JVGELLk4Q5o6oREppmDIGlmSCJRCEUCSZuZAmQUQjgn5+qxBBcHCPEGVGYgCwhZWXOw6BmbcDCqGNjOPCxAwBHvSY/OMtgWQAAAABJRU5ErkJggg==)](https://moodle2.cs.huji.ac.il/nu20/course/view.php?id=67829)
 
 ## How to - running the tests<a name="HOWTO"></a>
-### Setup<a name="SETUP"></a>
+### Setup<a name="SETUP"></a> :minidisc:
 1. Clone this repository into a _"tests"_ folder within your project's root folder:
     * Open a new folder named _"tests"_ in your project's root folder.
     * Open a command line on your computer, I will use cmd as an example on windows:
@@ -116,7 +118,7 @@ To run the tests you will only need the following things:
    
 5. That is it, no need for complicated voodoo. :smile:
 
-### Usage
+### Usage 
 There are two main ways to run the tests, via the Textual Interface or via pycharm's built in unittest support.
 I'll go through both of these here.
 #### Textual Interface<a name="CMD"></a>
