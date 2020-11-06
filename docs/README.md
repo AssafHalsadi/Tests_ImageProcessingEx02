@@ -4,7 +4,7 @@
 
 Testing suite for the second exercise of Image Processing course (67829) at HUJI. The suite includes basic tests for all of the exercises functions that checks the API, the return values, usage of loops and some functionality. In this README I will go over [requirements](#REQ), a [guide](#HOWTO) of how to use the tests, each tests coverage and what it means to pass it.
 
-## TLDR - If you don't know what to read, start here
+## TLDR - If you don't know what to do, start here
 The table of contents has links to all of the needed instructions, if you are just interested in running the tests:
 Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO)
 If you are confused about the results, go to the [Understanding your results](#UNDER) section.
