@@ -172,9 +172,10 @@ class TestEx2(unittest.TestCase):
         self.assertEqual(func_out.dtype, output_type, msg=f'{func_name} returned type should be {str(output_type)}')
 
         # Compares values of output to the values of the built in function, up to 5 points after the decimal
+        test_out = func_out
         if is_sound:
-            func_out = func_out.flatten()
-        self.assertIsNone(np.testing.assert_array_almost_equal(func_out, sys_out, decimal=5,
+            test_out = func_out.flatten()
+        self.assertIsNone(np.testing.assert_array_almost_equal(test_out, sys_out, decimal=5,
                                                                err_msg=f"Output is too different from {sys_func_name} implementation, please check your code again"))
 
         return func_out, sys_out
