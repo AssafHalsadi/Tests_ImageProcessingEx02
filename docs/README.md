@@ -11,7 +11,7 @@ Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO).
 
 If you are confused about the results, go to the [Understanding your results](#UNDER) section.
 
-If you don't know what a test checks, go to the [Test Scopes](#DOC) section.
+If you don't know what a test checks, go to the [Test Scopes](#SCOPES) section.
 
 If you find any issues, or want to ask a question, go to the [Contact Info](#CONTACT) section.
 
@@ -222,7 +222,7 @@ Each error explanation will begin with the word "Failure", followed by the trace
     <p><img src="../readme_assets/19.png" width="1000"></p>
     </details>
 
-## Test Scopes<a name="DOC"></a>
+## Test Scopes<a name="SCOPES"></a>
 ### DFT Tests
 All DFT tests compare the output to the built in numpy.fft counterpart functions.
 #### 'test_DFT_IDFT_1D'<a name="1D"></a>
