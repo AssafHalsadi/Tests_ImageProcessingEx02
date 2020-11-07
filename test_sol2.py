@@ -256,8 +256,8 @@ class TestEx2(unittest.TestCase):
             self.assertIsNone(np.testing.assert_array_equal(self.aria_data, sol_data,
                                                             err_msg=r'wav file data should not be changed by "change_rate" function'))
         else:
-            self.assertEqual(self.aria_rate, sol_rate,
-                             msg=f'"{func.__name__}" should not change the sample rate')
+            self.assertEqual(self.aria_rate, sol_rate, msg=f'"{func.__name__}" should not change the sample rate')
+
         # print("orig time : {}\nratio : {}\nnew time : {}\nsol new time : {}\n=====\n".format(orig_time, ratio, new_time, len(sol_data) / sol_rate))
         self.assertAlmostEqual(new_time, len(sol_data) / sol_rate, delta=acc,
                                msg=f'Old duration was {str(orig_time)} seconds, ratio was {str(ratio)}, new duration should be {str(new_time)} seconds. Check your calculations.')
@@ -313,7 +313,6 @@ class TestEx2(unittest.TestCase):
         ratio. DOES NOT test how the array was resized.
         :return: -
         """
-        # todo: comment - DOES NOT TEST *HOW* YOU RESIZED THE ARRAY, ONLY THAT IT IS RESIZED TO THE RIGHT LENGTH
         # ==== Structure testing ====
 
         self.assertEqual(str(inspect.signature(sol.resize)), r'(data, ratio)')
@@ -333,6 +332,10 @@ class TestEx2(unittest.TestCase):
 
         self.assertEqual(str(inspect.signature(sol.change_samples)), r'(filename, ratio)')
 
+        # Makes sure the function does not return anything
+        self.assertEqual(_has_return(sol.change_samples), False,
+                         msg=r'"change_samples" function should not have a return statement')
+
         # ==== Testing speed over different ratios ====
 
         for ratio in ratios:
@@ -342,11 +345,11 @@ class TestEx2(unittest.TestCase):
     # -------------------------------- 2.3 tests --------------------------------
 
     # todo: SPECIFY THAT BECAUSE STFT AND ISTFT ARE NOT PRECISE, RESULTS MAY VARY OR FLAT OUT BE WRONG
-    def test_resize_spectogram(self):
+    def test_resize_spectrogram(self):
         """                                                                
         Tests the "resize_spectrogram" function by using the speed test module.
         :return: -                                                         
-        """                                                                
+        """
         # ==== Structure testing ====
 
         self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)')
@@ -416,7 +419,6 @@ class TestEx2(unittest.TestCase):
 
     # -------------------------------- 3.1  --------------------------------
 
-    # todo: SPECIFY ITS COMPARED TO MY OUTPUT
     def test_conv_der(self):
         """
         Tests the "conv_der" function by using the derivative testing module.
@@ -426,7 +428,6 @@ class TestEx2(unittest.TestCase):
 
     # -------------------------------- 3.2  --------------------------------
 
-    # todo: SPECIFY ITS COMPARED TO MY OUTPUT
     def test_fourier_der(self):
         """
         Tests the "fourier_der" function by using the derivative testing module.

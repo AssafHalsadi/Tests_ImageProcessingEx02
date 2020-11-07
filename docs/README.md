@@ -11,7 +11,10 @@ Go to [Installation](#SETUP), install the tests, and [run the tests](#HOWTO).
 
 If you are confused about the results, go to the [Understanding your results](#UNDER) section.
 
+If you don't know what a test checks, go to the [Test Scopes](#DOC) section.
+
 If you find any issues, or want to ask a question, go to the [Contact Info](#CONTACT) section.
+
 
 ## :warning: DISCLAIMER :warning:
 Passing these tests DOES NOT guaranty you will get a good grade in any way, as they are not moderated by the course's staff.
@@ -42,8 +45,8 @@ All tests cover basic API checks, correct usage of return/loops and some specifi
         * ['test_DFT2_IDFT2'](#2D)
     * Audio Speed Tests
         * ['test_change_rate'](#RATE)
-        * ['test_change_samples'](#SAMPLES)
         * ['test_resize'](#RESIZE)
+        * ['test_change_samples'](#SAMPLES)
         * ['test_resize_spectogram'](#SPECTROGRAM)
         * ['test_resize_vocoder'](#VOCODER)
     * Derivative Tests
@@ -221,6 +224,127 @@ Each error explanation will begin with the word "Failure", followed by the trace
 
 ## Test Scopes<a name="DOC"></a>
 ### DFT Tests
+All DFT tests compare the output to the built in numpy.fft counterpart functions.
+#### 'test_DFT_IDFT_1D'<a name="1D"></a>
+```
+"""
 
+Tests both DFT and IDFT functions by comparing them to the built in np.fft.___ functions.
+Allows 1.e-5 difference.
+:return: -
+
+"""
+```
+This test tests both the DFT and IDFT functions applied to the _aria _ 4kHz.wav_ file, it covers:
+* Checks no loops are used in the implementation.
+* Checks the signature is correct.
+* Makes sure the shape and type of the output is correct.
+* Compares the output to the 'np.fft.fft' and 'np.fft.ifft' functions, allowing errors of up to 1.e-5 (as the built in implementation is more precise).  
+
+#### 'test_DFT2_IDFT2'<a name="2D"></a>
+```
+"""
+Tests both DFT2 and IDFT2 functions by comparing them to the built in np.fft.___ functions.
+Allows 1.e-5 difference.
+:return: -
+"""
+```
+This test tests both the DFT2 and IDFT2 functions applied to the _monkey.jpg_ file in grayscale mode, it covers:
+* Checks the signature is correct.
+* Makes sure the shape and type of the output is correct.
+* Compares the output to the 'np.fft.fft2' and 'np.fft.ifft2' functions, allowing errors of up to 1.e-5 (as the built in implementation is more precise).  
+
+### Audio Speed Tests
+All speed tests check the new speed is correct but not all of them go into HOW the speed was changed.
+#### 'test_change_rate'<a name="RATE"></a>
+```
+"""
+Tests the change rate function by comparing the outputted wav speed to the speed its supposed to be in
+and also makes sure the data did not change.
+:return: -
+"""
+```
+This test tests the "change_rate" function applied to multiple ratios, it covers:
+* Checks the signature is correct.
+* Makes sure the function does not return anything.
+* Makes sure the wav file data was not changed by the function.
+* Checks the new speed of the wav file is correct, allowing errors of up to 1.e-3.  
+
+#### 'test_resize'<a name="RESIZE"></a>
+```
+"""
+Tests resize function by checking the outputted arrays have the correct length in correspondance to the given
+ratio. DOES NOT test how the array was resized.
+:return: -
+"""
+```
+This test tests the "resize" function applied to multiple arrays, it covers:
+* Checks the signature is correct.
+* Makes sure the returned array is 1D.
+* Makes sure the returned dtype is correct according to pdf.
+* Checks the new size is correct.
+
+:warning: Does not check HOW you resize the array, make sure you follow the pdf :warning:
+
+#### 'test_change_samples'<a name="SAMPLES"></a>
+```
+"""
+Tests the "change_samples" function by using the speed test module.
+:return: -
+"""
+```
+This test tests the "change_samples" function applied to multiple ratios, it covers:
+* Checks the signature is correct.
+* Makes sure the function does not return anything.
+* Makes sure the wav file rate was not changed by the function.
+* Checks the new speed of the wav file is correct, allowing errors of up to 1.e-3.  
+
+#### 'test_resize_spectrogram'<a name="SPECTROGRAM"></a>
+```
+"""                                                                
+Tests the "resize_spectrogram" function by using the speed test module.
+:return: -                                                         
+"""
+```
+This test tests the "resize_spectrogram" function applied to multiple ratios, it covers:
+* Checks the signature is correct.
+* Makes sure the wav file rate was not changed by the function.
+* Checks the new speed of the wav file is correct, allowing errors of up to 1.e-1 for fast forwarding and 5.e-1 for slowing down.
+
+#### 'test_resize_vocoder'<a name="VOCODER"></a>
+```
+"""
+Tests the "resize_vocoder" function by using the speed test module.
+:return: -
+"""
+```
+This test tests the "resize_vocoder" function applied to multiple ratios, it covers:
+* Checks the signature is correct.
+* Makes sure the wav file rate was not changed by the function.
+* Checks the new speed of the wav file is correct, allowing errors of up to 1.e-1 for fast forwarding and 5.e-1 for slowing down.
+
+### Derivative Tests
+All derivative tests compare to MY OUTPUT and might be wrong due to that.
+#### 'test_conv_der'<a name="CONVDER"></a>
+```
+"""
+Tests the "conv_der" function by using the derivative testing module.
+:return: -
+"""
+```
+This test tests the "conv_der" function applied to multiple images, it covers:
+* Checks the signature is correct.
+* Compares output to MY RESULTS. 
+
+#### 'test_fourier_der'<a name="FOURIERDER"></a>
+```
+"""
+Tests the "fourier_der" function by using the derivative testing module.
+:return: -
+"""
+```
+This test tests the "fourier_der" function applied to multiple images, it covers:
+* Checks the signature is correct.
+* Compares output to MY RESULTS. 
 
 
