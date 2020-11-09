@@ -226,7 +226,7 @@ Each error explanation will begin with the word "Failure", followed by the trace
 ### DFT Tests
 All DFT tests compare the output to the built in numpy.fft counterpart functions.
 #### 'test_DFT_IDFT_1D'<a name="1D"></a>
-```
+```python
 """
 
 Tests both DFT and IDFT functions by comparing them to the built in np.fft.___ functions.
@@ -242,7 +242,7 @@ This test tests both the DFT and IDFT functions applied to the _aria _ 4kHz.wav_
 * Compares the output to the 'np.fft.fft' and 'np.fft.ifft' functions, allowing errors of up to 1.e-5 (as the built in implementation is more precise).  
 
 #### 'test_DFT2_IDFT2'<a name="2D"></a>
-```
+```python
 """
 Tests both DFT2 and IDFT2 functions by comparing them to the built in np.fft.___ functions.
 Allows 1.e-5 difference.
@@ -257,7 +257,7 @@ This test tests both the DFT2 and IDFT2 functions applied to the _monkey.jpg_ fi
 ### Audio Speed Tests
 All speed tests check the new speed is correct but not all of them go into HOW the speed was changed.
 #### 'test_change_rate'<a name="RATE"></a>
-```
+```python
 """
 Tests the change rate function by comparing the outputted wav speed to the speed its supposed to be in
 and also makes sure the data did not change.
@@ -271,7 +271,7 @@ This test tests the "change_rate" function applied to multiple ratios, it covers
 * Checks the new speed of the wav file is correct, allowing errors of up to 1.e-3.  
 
 #### 'test_resize'<a name="RESIZE"></a>
-```
+```python
 """
 Tests resize function by checking the outputted arrays have the correct length in correspondance to the given
 ratio. DOES NOT test how the array was resized.
@@ -287,7 +287,7 @@ This test tests the "resize" function applied to multiple arrays, it covers:
 :warning: Does not check HOW you resize the array, make sure you follow the pdf :warning:
 
 #### 'test_change_samples'<a name="SAMPLES"></a>
-```
+```python
 """
 Tests the "change_samples" function by using the speed test module.
 :return: -
@@ -300,7 +300,7 @@ This test tests the "change_samples" function applied to multiple ratios, it cov
 * Checks the new speed of the wav file is correct, allowing errors of up to 1.e-3.  
 
 #### 'test_resize_spectrogram'<a name="SPECTROGRAM"></a>
-```
+```python
 """                                                                
 Tests the "resize_spectrogram" function by using the speed test module.
 :return: -                                                         
@@ -312,7 +312,7 @@ This test tests the "resize_spectrogram" function applied to multiple ratios, it
 * Checks the new speed of the wav file is correct, allowing errors of up to 1.e-1 for fast forwarding and 5.e-1 for slowing down.
 
 #### 'test_resize_vocoder'<a name="VOCODER"></a>
-```
+```python
 """
 Tests the "resize_vocoder" function by using the speed test module.
 :return: -
@@ -326,7 +326,7 @@ This test tests the "resize_vocoder" function applied to multiple ratios, it cov
 ### Derivative Tests
 All derivative tests compare to MY OUTPUT and might be wrong due to that.
 #### 'test_conv_der'<a name="CONVDER"></a>
-```
+```python
 """
 Tests the "conv_der" function by using the derivative testing module.
 :return: -
@@ -337,7 +337,7 @@ This test tests the "conv_der" function applied to multiple images, it covers:
 * Compares output to MY RESULTS. 
 
 #### 'test_fourier_der'<a name="FOURIERDER"></a>
-```
+```python
 """
 Tests the "fourier_der" function by using the derivative testing module.
 :return: -

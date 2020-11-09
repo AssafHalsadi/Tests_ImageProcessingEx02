@@ -222,7 +222,7 @@ class TestEx2(unittest.TestCase):
         # ==== Test IDFT2 ====
         # todo: check if out_type here is float64 or complex128
         self._test_fourier_module(func=sol.IDFT2, func_in=(dft2_out,), system_func=np.fft.ifft2,
-                                  out_info=((500, 418), np.dtype('float64')), sys_in=(fft2_out,),
+                                  out_info=((500, 418), np.dtype('complex128')), sys_in=(fft2_out,),
                                   signature=r'(fourier_image)',
                                   no_loops=False, is_sound=False)
 
@@ -399,10 +399,10 @@ class TestEx2(unittest.TestCase):
 
         for im in self.images:
             # Chooses path according to the function that is being tested.
-            rel_path = r'output_compare/{}_mag.csv' if (name == 'conv_der') else r'output_compare/{}_mag.csv'
+            rel_path = r'output_compare/{}_mag.csv' if (name == 'conv_der') else r'output_compare/{}_fourier_mag.csv'
 
             # Code that saved my output
-            # np.savetxt(os.path.abspath(rel_path.format(im[1])), sol.conv_der(im[0]), delimiter=",")
+            # np.savetxt(os.path.abspath(rel_path.format(im[1])), func(im[0]), delimiter=",")
 
             # Retrieves my output
             saved_mag = np.loadtxt(os.path.abspath(rel_path.format(im[1])), np.float64, delimiter=",")
@@ -415,7 +415,10 @@ class TestEx2(unittest.TestCase):
                              msg=r'Derivative magnitude matrix\'s shape should be equal to the original image.')
 
             # Compares outputs
-            self.assertIsNone(np.testing.assert_array_equal(mag, saved_mag))
+            if name == 'conv_der':
+                self.assertIsNone(np.testing.assert_array_equal(mag, saved_mag))
+            else:
+                self.assertIsNone(np.testing.assert_array_almost_equal(mag, saved_mag, decimal=3))
 
     # -------------------------------- 3.1  --------------------------------
 
