@@ -344,8 +344,6 @@ This test tests the "conv_der" function applied to multiple images, it covers:
 Tests the "fourier_der" function by using the derivative testing module.
 :return: -
 """
-
-from typing import Union
 ```
 This test tests the "fourier_der" function applied to multiple images, it covers:
 * Checks the signature is correct.
