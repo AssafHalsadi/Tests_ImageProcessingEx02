@@ -287,6 +287,7 @@ This test tests the "resize" function applied to multiple arrays, it covers:
 :warning: Does not check HOW you resize the array, make sure you follow the pdf :warning:
 
 #### 'test_change_samples'<a name="SAMPLES"></a>
+:round_pushpin: This test might take a lot of time to run
 ```python
 """
 Tests the "change_samples" function by using the speed test module.
@@ -337,6 +338,7 @@ This test tests the "conv_der" function applied to multiple images, it covers:
 * Compares output to MY RESULTS. 
 
 #### 'test_fourier_der'<a name="FOURIERDER"></a>
+:round_pushpin: This test might take a lot of time to run
 ```python
 """
 Tests the "fourier_der" function by using the derivative testing module.
