@@ -49,9 +49,9 @@ All tests cover basic API checks, correct usage of return/loops and some specifi
         * ['test_change_samples'](#SAMPLES)
         * ['test_resize_spectogram'](#SPECTROGRAM)
         * ['test_resize_vocoder'](#VOCODER)
-    * Derivative Tests
-        * ['test_conv_der'](#CONVDER)
-        * ['test_fourier_der'](#FOURIERDER)
+    * :x: DEPRECATED :x: ~~Derivative Tests~~ 
+        * [~~'test_conv_der'~~](#CONVDER)
+        * [~~'test_fourier_der'~~](#FOURIERDER)
 
     
 ## :books: Documentation<a name="DOC"></a>
@@ -324,6 +324,7 @@ This test tests the "resize_vocoder" function applied to multiple ratios, it cov
 * Makes sure the wav file rate was not changed by the function.
 * Checks the new speed of the wav file is correct, allowing errors of up to 1.e-1 for fast forwarding and 5.e-1 for slowing down.
 
+# Deprecated tests
 ### Derivative Tests
 All derivative tests compare to MY OUTPUT and might be wrong due to that.
 #### 'test_conv_der'<a name="CONVDER"></a>
@@ -338,6 +339,7 @@ This test tests the "conv_der" function applied to multiple images, it covers:
 * Compares output to MY RESULTS. 
 
 #### 'test_fourier_der'<a name="FOURIERDER"></a>
+
 :round_pushpin: This test might take a lot of time to run
 ```python
 """

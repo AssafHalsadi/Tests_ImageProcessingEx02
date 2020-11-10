@@ -129,6 +129,8 @@ class TestEx2(unittest.TestCase):
 
         # Generates images.
         cls.monkey_grayscale = read_image(cls.monkey_path, 1)
+        cls.reshaped_monkey_grayscale = cls.monkey_grayscale.reshape(cls.monkey_grayscale.shape[0],
+                                                                     cls.monkey_grayscale.shape[1], 1)
         cls.images = _generate_images(['monkey', 'city', 'trees', 'view', 'waterfall', 'woman'])
 
     # ================================ Part I Tests ================================
@@ -155,27 +157,29 @@ class TestEx2(unittest.TestCase):
 
         # Check no loops if needed
         if no_loops:
-            self.assertEqual(_uses_loop(func), False,
+            self.assertEqual(False, _uses_loop(func),
                              msg=f"Your {func_name} implementation should not contain loops")
 
         # Checks the signature of the function
-        self.assertEqual(str(inspect.signature(func)), signature)
+        self.assertEqual(signature, str(inspect.signature(func)))
 
         # init values
         func_out = func(*func_in)
         sys_out = system_func(*sys_in)
 
         # Checks shape of output
-        self.assertEqual(func_out.shape, out_info[0], msg=f'{func_name} returned shape should be {output_shape}')
+        self.assertEqual(out_info[0], func_out.shape, msg=f'{func_name} returned shape should be {output_shape}')
 
         # Checks type of output
-        self.assertEqual(func_out.dtype, output_type, msg=f'{func_name} returned type should be {str(output_type)}')
+        self.assertEqual(output_type, func_out.dtype, msg=f'{func_name} returned type should be {str(output_type)}')
 
         # Compares values of output to the values of the built in function, up to 5 points after the decimal
         test_out = func_out
         if is_sound:
             test_out = func_out.flatten()
-        self.assertIsNone(np.testing.assert_array_almost_equal(test_out, sys_out, decimal=5,
+        else:
+            test_out = test_out.reshape(test_out.shape[0], test_out.shape[1])
+        self.assertIsNone(np.testing.assert_array_almost_equal(sys_out, test_out, decimal=5,
                                                                err_msg=f"Output is too different from {sys_func_name} implementation, please check your code again"))
 
         return func_out, sys_out
@@ -214,15 +218,15 @@ class TestEx2(unittest.TestCase):
         """
         # ==== Test DFT2 ====
 
-        dft2_out, fft2_out = self._test_fourier_module(func=sol.DFT2, func_in=(self.monkey_grayscale,),
+        dft2_out, fft2_out = self._test_fourier_module(func=sol.DFT2, func_in=(self.reshaped_monkey_grayscale,),
                                                        system_func=np.fft.fft2,
-                                                       out_info=((500, 418), np.dtype('complex128')),
+                                                       out_info=((500, 418, 1), np.dtype('complex128')),
                                                        sys_in=(self.monkey_grayscale,), signature=r'(image)',
                                                        no_loops=False, is_sound=False)
         # ==== Test IDFT2 ====
         # todo: check if out_type here is float64 or complex128
         self._test_fourier_module(func=sol.IDFT2, func_in=(dft2_out,), system_func=np.fft.ifft2,
-                                  out_info=((500, 418), np.dtype('complex128')), sys_in=(fft2_out,),
+                                  out_info=((500, 418, 1), np.dtype('complex128')), sys_in=(fft2_out,),
                                   signature=r'(fourier_image)',
                                   no_loops=False, is_sound=False)
 
@@ -248,6 +252,11 @@ class TestEx2(unittest.TestCase):
         if func.__name__ == "resize_spectrogram":
             sol_rate = self.aria_rate
             sol_data = func(first_arg, np.float64(ratio))
+        elif func.__name__ == "change_samples":
+            out_data = func(first_arg, np.float64(ratio))
+            self.assertEqual(np.dtype("float64"), out_data.dtype, msg=r'change_samples returned dtype should be float64')
+            self.assertEqual(1, len(out_data.shape), msg=r'change_samples output should be 1D')
+            sol_rate, sol_data = wavfile.read(os.path.abspath(f'{func.__name__}.wav'))
         else:
             func(first_arg, np.float64(ratio))
             sol_rate, sol_data = wavfile.read(os.path.abspath(f'{func.__name__}.wav'))
@@ -273,10 +282,10 @@ class TestEx2(unittest.TestCase):
         # ==== Structure testing ====
 
         # Tests signature
-        self.assertEqual(str(inspect.signature(sol.change_rate)), r'(filename, ratio)')
+        self.assertEqual(r'(filename, ratio)', str(inspect.signature(sol.change_rate)))
 
         # Makes sure the function does not return anything
-        self.assertEqual(_has_return(sol.change_rate), False,
+        self.assertEqual(False, _has_return(sol.change_rate),
                          msg=r'"change_rate" function should not have a return statement')
 
         # ==== Testing speed over different ratios ====
@@ -304,7 +313,7 @@ class TestEx2(unittest.TestCase):
                             msg=r'"change_samples" returned array should be of dtype np.float64 or np.complex128')
 
             # Compares
-            self.assertEqual(result.shape[0], arr.shape[0] // ratio,
+            self.assertEqual(arr.shape[0] // ratio, result.shape[0],
                              msg=f'"change_samples" returned array\'s length is wrong on {name} array and {str(ratio)} ratio.')
 
     def test_resize(self):
@@ -315,7 +324,7 @@ class TestEx2(unittest.TestCase):
         """
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.resize)), r'(data, ratio)')
+        self.assertEqual(r'(data, ratio)', str(inspect.signature(sol.resize)))
 
         # todo: check if should not have loops
         # todo: check if an empty array might be sent as input
@@ -330,11 +339,11 @@ class TestEx2(unittest.TestCase):
         """
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.change_samples)), r'(filename, ratio)')
+        self.assertEqual(r'(filename, ratio)', str(inspect.signature(sol.change_samples)))
 
-        # Makes sure the function does not return anything
-        self.assertEqual(_has_return(sol.change_samples), False,
-                         msg=r'"change_samples" function should not have a return statement')
+        # The function used to not have a returned statement, it changed
+        # self.assertEqual(False, _has_return(sol.change_samples),
+        #                  msg=r'"change_samples" function should not have a return statement')
 
         # ==== Testing speed over different ratios ====
 
@@ -352,7 +361,7 @@ class TestEx2(unittest.TestCase):
         """
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.resize_spectrogram)), r'(data, ratio)')
+        self.assertEqual(r'(data, ratio)', str(inspect.signature(sol.resize_spectrogram)))
 
         # ==== Testing speed over different ratios ====
 
@@ -372,7 +381,7 @@ class TestEx2(unittest.TestCase):
         """
         # ==== Structure testing ====
 
-        self.assertEqual(str(inspect.signature(sol.resize_vocoder)), r'(data, ratio)',
+        self.assertEqual(r'(data, ratio)', str(inspect.signature(sol.resize_vocoder)),
                          msg='"resize_spectrogram"\'s signature is not as requested.')
 
         # ==== Testing speed over different ratios ====
@@ -382,6 +391,10 @@ class TestEx2(unittest.TestCase):
                 self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 1.e-1)
             else:
                 self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 5.e-1)
+
+##############################################################################
+################################# DEPRECATED #################################
+##############################################################################
 
     # ================================ Part III Tests ================================
 
@@ -394,7 +407,7 @@ class TestEx2(unittest.TestCase):
         :return: -
         """
         # ==== Structure testing ====
-        self.assertEqual(str(inspect.signature(func)), r'(im)',
+        self.assertEqual(r'(im)', str(inspect.signature(func)),
                          msg=f'"{name}"\'s signature is not as requested.')
 
         for im in self.images:
@@ -416,27 +429,31 @@ class TestEx2(unittest.TestCase):
 
             # Compares outputs
             if name == 'conv_der':
-                self.assertIsNone(np.testing.assert_array_equal(mag, saved_mag))
+                self.assertIsNone(np.testing.assert_array_equal(saved_mag, mag))
             else:
-                self.assertIsNone(np.testing.assert_array_almost_equal(mag, saved_mag, decimal=3))
+                self.assertIsNone(np.testing.assert_array_almost_equal(saved_mag, mag, decimal=3))
 
-    # -------------------------------- 3.1  --------------------------------
+# # -------------------------------- 3.1  --------------------------------
+#
+# def test_conv_der(self):
+#     """
+#     Tests the "conv_der" function by using the derivative testing module.
+#     :return: -
+#     """
+#     self._test_der_module(sol.conv_der, sol.conv_der.__name__)
+#
+# # -------------------------------- 3.2  --------------------------------
+#
+# def test_fourier_der(self):
+#     """
+#     Tests the "fourier_der" function by using the derivative testing module.
+#     :return: -
+#     """
+#     self._test_der_module(sol.fourier_der, sol.fourier_der.__name__)
 
-    def test_conv_der(self):
-        """
-        Tests the "conv_der" function by using the derivative testing module.
-        :return: -
-        """
-        self._test_der_module(sol.conv_der, sol.conv_der.__name__)
-
-    # -------------------------------- 3.2  --------------------------------
-
-    def test_fourier_der(self):
-        """
-        Tests the "fourier_der" function by using the derivative testing module.
-        :return: -
-        """
-        self._test_der_module(sol.fourier_der, sol.fourier_der.__name__)
+##############################################################################
+################################# DEPRECATED #################################
+##############################################################################
 
 
 if __name__ == '__main__':
