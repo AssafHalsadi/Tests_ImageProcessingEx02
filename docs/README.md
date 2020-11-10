@@ -324,10 +324,10 @@ This test tests the "resize_vocoder" function applied to multiple ratios, it cov
 * Makes sure the wav file rate was not changed by the function.
 * Checks the new speed of the wav file is correct, allowing errors of up to 1.e-1 for fast forwarding and 5.e-1 for slowing down.
 
-# Deprecated tests
+# :x: Deprecated tests :x:
 ### Derivative Tests
 All derivative tests compare to MY OUTPUT and might be wrong due to that.
-#### 'test_conv_der'<a name="CONVDER"></a>
+#### ~~'test_conv_der'~~<a name="CONVDER"></a>
 ```python
 """
 Tests the "conv_der" function by using the derivative testing module.
@@ -338,7 +338,7 @@ This test tests the "conv_der" function applied to multiple images, it covers:
 * Checks the signature is correct.
 * Compares output to MY RESULTS. 
 
-#### 'test_fourier_der'<a name="FOURIERDER"></a>
+#### ~~'test_fourier_der'~~<a name="FOURIERDER"></a>
 
 :round_pushpin: This test might take a lot of time to run
 ```python
