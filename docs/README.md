@@ -107,6 +107,7 @@ To run the tests you will only need the following things:
     * You might be prompted to enter your [CSE user credentials](https://wiki.cs.huji.ac.il/wiki/Password_and_OTP#OTP_and_UNIX_passwords)
     
     :x: Step 2 no longer needed :x:
+    
 ~~2. Unpack the _output_compare.rar_ located in the _output_compare_ folder.~~
     <details>
     <summary>Open Image</summary>
