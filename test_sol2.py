@@ -196,7 +196,14 @@ class TestEx2(unittest.TestCase):
         # ==== Test DFT ====
         dft_out, fft_out = self._test_fourier_module(func=sol.DFT, func_in=(self.reshaped_aria,),
                                                      system_func=np.fft.fft,
-                                                     out_info=((9600, 1), np.dtype('complex128')),
+                                                     out_info=(self.reshaped_aria.shape, np.dtype('complex128')),
+                                                     sys_in=(self.aria_data,),
+                                                     signature=r'(signal)',
+                                                     no_loops=True, is_sound=True)
+
+        dft_out_normal, fft_out_normal = self._test_fourier_module(func=sol.DFT, func_in=(self.aria_data,),
+                                                     system_func=np.fft.fft,
+                                                     out_info=(self.aria_data.shape, np.dtype('complex128')),
                                                      sys_in=(self.aria_data,),
                                                      signature=r'(signal)',
                                                      no_loops=True, is_sound=True)
@@ -204,9 +211,16 @@ class TestEx2(unittest.TestCase):
         # ==== Test IDFT ====
 
         self._test_fourier_module(func=sol.IDFT, func_in=(dft_out,), system_func=np.fft.ifft,
-                                  out_info=((9600, 1), np.dtype('complex128')), sys_in=(fft_out,),
+                                  out_info=(self.reshaped_aria.shape, np.dtype('complex128')), sys_in=(fft_out,),
                                   signature=r'(fourier_signal)',
                                   no_loops=True, is_sound=True)
+
+        self._test_fourier_module(func=sol.IDFT, func_in=(dft_out_normal,), system_func=np.fft.ifft,
+                                  out_info=(self.aria_data.shape, np.dtype('complex128')), sys_in=(fft_out_normal,),
+                                  signature=r'(fourier_signal)',
+                                  no_loops=True, is_sound=True)
+
+
 
     # -------------------------------- 1.2 test  --------------------------------
 
@@ -220,13 +234,25 @@ class TestEx2(unittest.TestCase):
 
         dft2_out, fft2_out = self._test_fourier_module(func=sol.DFT2, func_in=(self.reshaped_monkey_grayscale,),
                                                        system_func=np.fft.fft2,
-                                                       out_info=((500, 418, 1), np.dtype('complex128')),
+                                                       out_info=(self.reshaped_monkey_grayscale.shape, np.dtype('complex128')),
                                                        sys_in=(self.monkey_grayscale,), signature=r'(image)',
                                                        no_loops=False, is_sound=False)
+
+        dft2_out_normal, fft2_out_normal = self._test_fourier_module(func=sol.DFT2, func_in=(self.monkey_grayscale,),
+                                                       system_func=np.fft.fft2,
+                                                       out_info=(self.monkey_grayscale.shape, np.dtype('complex128')),
+                                                       sys_in=(self.monkey_grayscale,), signature=r'(image)',
+                                                       no_loops=False, is_sound=False)
+
         # ==== Test IDFT2 ====
-        # todo: check if out_type here is float64 or complex128
+
         self._test_fourier_module(func=sol.IDFT2, func_in=(dft2_out,), system_func=np.fft.ifft2,
-                                  out_info=((500, 418, 1), np.dtype('complex128')), sys_in=(fft2_out,),
+                                  out_info=(self.reshaped_monkey_grayscale.shape, np.dtype('complex128')), sys_in=(fft2_out,),
+                                  signature=r'(fourier_image)',
+                                  no_loops=False, is_sound=False)
+
+        self._test_fourier_module(func=sol.IDFT2, func_in=(dft2_out_normal,), system_func=np.fft.ifft2,
+                                  out_info=(self.monkey_grayscale.shape, np.dtype('complex128')), sys_in=(fft2_out_normal,),
                                   signature=r'(fourier_image)',
                                   no_loops=False, is_sound=False)
 

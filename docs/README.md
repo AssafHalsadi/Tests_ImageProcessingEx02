@@ -1,5 +1,5 @@
 # HUJI Image Processing course (67829) Ex2 Tests 2020/2021<a name="TOP"></a>
-[![Build Status](https://img.shields.io/badge/build%20version-1.2-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
+[![Build Status](https://img.shields.io/badge/build%20version-1.3-green)](https://github.com/AssafHalsadi/Tests_ImageProcessingEx02)
 ![](../readme_assets/cover_image.jpg)
 
 Testing suite for the second exercise of Image Processing course (67829) at HUJI. The suite includes basic tests for all of the exercises functions that checks the API, the return values, usage of loops and some functionality. In this README I will go over [requirements](#REQ), a [guide](#HOWTO) of how to use the tests, each tests coverage and what it means to pass it.
@@ -241,7 +241,7 @@ Allows 1.e-5 difference.
 This test tests both the DFT and IDFT functions applied to the _aria _ 4kHz.wav_ file, it covers:
 * Checks no loops are used in the implementation.
 * Checks the signature is correct.
-* Makes sure the shape and type of the output is correct.
+* Makes sure the shape and type of the output is correct (UPDATE 1.3: Checks the shape wasn't changed from input).
 * Compares the output to the 'np.fft.fft' and 'np.fft.ifft' functions, allowing errors of up to 1.e-5 (as the built in implementation is more precise).  
 
 #### 'test_DFT2_IDFT2'<a name="2D"></a>
@@ -254,7 +254,7 @@ Allows 1.e-5 difference.
 ```
 This test tests both the DFT2 and IDFT2 functions applied to the _monkey.jpg_ file in grayscale mode, it covers:
 * Checks the signature is correct.
-* Makes sure the shape and type of the output is correct.
+* Makes sure the shape and type of the output is correct (UPDATE 1.3: Checks the shape wasn't changed from input).
 * Compares the output to the 'np.fft.fft2' and 'np.fft.ifft2' functions, allowing errors of up to 1.e-5 (as the built in implementation is more precise).  
 
 ### Audio Speed Tests
