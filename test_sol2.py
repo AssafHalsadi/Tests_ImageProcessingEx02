@@ -275,7 +275,7 @@ class TestEx2(unittest.TestCase):
         orig_time = len(self.aria_data) / self.aria_rate
         new_time = orig_time / ratio
 
-        if func.__name__ == "resize_spectrogram":
+        if func.__name__ in ["resize_spectrogram", "resize_vocoder"]:
             sol_rate = self.aria_rate
             sol_data = func(first_arg, np.float64(ratio))
         elif func.__name__ == "change_samples":
@@ -414,9 +414,9 @@ class TestEx2(unittest.TestCase):
 
         for ratio in ratios:
             if ratio >= 1:
-                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 1.e-1)
+                self._test_speedup_module(sol.resize_vocoder, ratio, self.aria_data, 1.e-1)
             else:
-                self._test_speedup_module(sol.resize_spectrogram, ratio, self.aria_data, 5.e-1)
+                self._test_speedup_module(sol.resize_vocoder, ratio, self.aria_data, 5.e-1)
 
 ##############################################################################
 ################################# DEPRECATED #################################
